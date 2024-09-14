@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Class>;
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h4 class="card-title">Categories</h4>
+                    <p class="card-title-desc">
+                        The Categories are based on the products, meaning the product is based on the categories. Categories define the type of product, and we also make filters and other sections. We like to add many categories.
+                    </p>
+
+                    <a href="@Url.Action("CreateClasses", "Class")" class="btn btn-secondary mb-2">Add Category</a>
+
+                    <div class="table-responsive">
+                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th>Class_ID</th>
+                                    <th>Class_NAME</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in Model)
+                                {
+                                    <tr>
+                                        <td>@i.ClassId  </td>
+                                        <td>@i.ClassName </td>
+
+                                        <td>
+                                            
+                                            <a class="btn btn-success btn-sm m-1" asp-action="EditClass" asp-controller="Class" asp-route-id="@i.ClassId">Update</a>
+                                            <a class="btn btn-danger btn-sm m-1" asp-action="DeleteClasses" asp-controller="Class" asp-route-id="@i.ClassId">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end card-body -->
+    </div> <!-- end card -->
+</div> <!-- end container-fluid -->
